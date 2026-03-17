@@ -1,4 +1,3 @@
-
 from dotenv import load_dotenv
 from anthropic import Anthropic
 from anthropic.types import MessageParam, TextBlock
@@ -16,16 +15,14 @@ def add_user_message(messages: list[MessageParam], content: str) -> None:
 
 def add_assistant_message(messages: list[MessageParam], content: str) -> None:
     """Peasant application management"""
-    assistant_message :MessageParam = {"role": "assistant", "content": content}
+    assistant_message: MessageParam = {"role": "assistant", "content": content}
     messages.append(assistant_message)
 
 
 def chat(messages: list[MessageParam]) -> str:
     """Basic text response handling"""
     message = client.messages.create(
-        model="claude-haiku-4-5",
-        max_tokens=1000,
-        messages=messages
+        model="claude-haiku-4-5", max_tokens=1000, messages=messages
     )
 
     # make sure we're returning something capable of having text type
