@@ -11,3 +11,4 @@ wheels/
 
 # no, we do not want the notebooks
 *.ipynb
+.ipynb_checkpoints
