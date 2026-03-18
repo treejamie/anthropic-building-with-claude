@@ -19,13 +19,16 @@ def add_assistant_message(messages: list[MessageParam], content: str) -> None:
     messages.append(assistant_message)
 
 
-def chat(messages: list[MessageParam], system: str | None = None) -> str:
+def chat(
+    messages: list[MessageParam], system: str | None = None, temperature: float = 0.2
+) -> str:
     """Basic text response handling"""
     message: Message = client.messages.create(
         model="claude-haiku-4-5",
         max_tokens=1000,
         messages=messages,
         system=system or "",
+        temperature=temperature,
     )
 
     # make sure we're returning something capable of having text type
