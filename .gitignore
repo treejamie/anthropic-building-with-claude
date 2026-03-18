@@ -5,4 +5,6 @@ dist/
 wheels/
 *.egg-info
 .venv
+
+# no you shall not have my api key.
 .env
