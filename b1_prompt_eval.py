@@ -5,6 +5,7 @@
 # """
 
 import json
+import datetime
 import ast
 import re
 from statistics import mean
@@ -202,3 +203,17 @@ def run_eval(dataset: dict) -> list:
     print(f"Average_score: {average_score}")
 
     return results
+
+
+def save_results(results: list[dict[str, str | int]]) -> bool:
+    try:
+        dump = json.dumps(results)
+        filename = filename = (
+            f"results_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        )
+        with open(filename, "w+") as fp:
+            fp.write(dump)
+        return True
+    except ValueError as e:
+        print(e)
+        return False
