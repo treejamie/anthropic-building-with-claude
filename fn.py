@@ -1,3 +1,4 @@
+from typing import Any
 import json
 import concurrent.futures
 import re
@@ -51,6 +52,11 @@ def chat(
     block = message.content[0]
     assert isinstance(block, TextBlock)
     return block.text
+
+
+#
+# EVERYTHING BELOW IS COPIED VERBATIM
+#
 
 
 # Report Builder (copied verbatim from notebook)
@@ -440,7 +446,7 @@ class PromptEvaluator:
         prompt_inputs_spec={},
         num_cases=1,
         output_file="dataset.json",
-    ):
+    ) -> dict[str, Any]:
         """Generate test dataset based on task description and save to file"""
         ideas = self.generate_unique_ideas(
             task_description, prompt_inputs_spec, num_cases
