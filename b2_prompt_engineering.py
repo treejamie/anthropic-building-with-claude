@@ -99,13 +99,29 @@ def versioned_prompt(version: int, prompt_inputs: dict[str, str]) -> str:
     5. List all portion sizes in grams
     6. Keep budget-friendly if mentioned
     """,
+        4: f"""
+    Generate a one day meal plan for an athelete that meets their dietary restrictions.
+    
+    - Height: {prompt_inputs["height"]}
+    - Weight: {prompt_inputs["weight"]}
+    - Goal: {prompt_inputs["goal"]} 
+    - Dietary restrictions: {prompt_inputs["restrictions"]}
+    
+    Follow these steps:
+    1. Calulate daily calories needed
+    2. Figure out protein, carbs and fat amounts
+    3. Plan meal timings around workouts
+    4. Choose foods that fit restrictions
+    5. Set portion sizes in grams
+    6. Adjust for budget if needed
+    """,
     }
 
     return PROMPTS[version]
 
 
 def run_prompt(prompt_inputs: dict[str, Any]) -> str:
-    prompt = versioned_prompt(3, prompt_inputs=prompt_inputs)
+    prompt = versioned_prompt(4, prompt_inputs=prompt_inputs)
 
     # create a list of messages
     messages: list[MessageParam] = []
